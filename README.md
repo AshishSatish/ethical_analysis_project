@@ -1,7 +1,24 @@
 Ethical Analysis Project
-This project analyzes company reports to extract ethical insights like sustainability, governance, and transparency using search algorithms. We implement both Blind Search and A* Search to optimize the search for ethical terms in large documents.
+This project focuses on extracting and analyzing ethical insights from company annual reports. It employs Blind Search and A* search algorithms to efficiently identify and summarize relevant ethical terms and concepts.
 
 Features
-Extracts and processes text from PDFs.
-Uses both Blind Search and A* Search for keyword-based extraction.
-Outputs relevant ethical information for further analysis.# ethical_analysis_project
+Text Extraction: Automatically extracts text from PDF documents.
+Blind Search: Scans the entire document for keywords without heuristic guidance.
+A* Search: Utilizes heuristic-based optimization for keyword searches.
+Fuzzy Matching: Matches keywords with partial matches to enhance search accuracy.
+Output Generation: Produces a summary report of ethical insights.
+Technologies Used
+Python: The primary programming language for the project.
+PyPDF2: A library for extracting text from PDF files.
+NLTK: A toolkit for natural language processing.
+FuzzyWuzzy: A library for fuzzy string matching.
+Folder Structure
+data/: Contains PDF files for analysis.
+output/: Stores generated output reports.
+src/: Contains source code files for text preprocessing, report parsing, search algorithms, and testing scripts.
+Installation
+Clone the repository to your local machine.
+Create a virtual environment and activate it.
+Install the required packages listed in the requirements.txt file.
+Usage
+Run the main testing script to extract ethical insights from the provided PDF documents.
