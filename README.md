@@ -31,8 +31,6 @@ This project focuses on extracting and analyzing ethical insights from company a
 ├── README.md # This file 
 └── requirements.txt # Dependencies for the project
 
-perl
-Copy code
 
 ## Installation
 
