@@ -22,14 +22,14 @@ This project focuses on extracting and analyzing ethical insights from company a
 
 ## Folder Structure
 
-├── data/ # Contains input PDF files for analysis 
-├── output/ # Stores generated output reports and summaries 
-├── src/ # Source code files for search algorithms and text processing 
-  ├── preprocess_text.py # Preprocesses extracted text 
-  ├── search_algorithms.py # Implements Blind Search and A* Search algorithms 
-  └── test_search_algorithms.py # Main script to run the project 
-├── README.md # This file 
-└── requirements.txt # Dependencies for the project
+├── data/                         # Contains input PDF files for analysis  
+├── output/                       # Stores generated output reports and summaries  
+├── src/                          # Source code files for search algorithms and text processing  
+│   ├── preprocess_text.py        # Preprocesses extracted text  
+│   ├── search_algorithms.py      # Implements Blind Search and A* Search algorithms  
+│   └── test_search_algorithms.py # Main script to run the project  
+├── README.md                     # This file  
+└── requirements.txt              # Dependencies for the project  
 
 
 ## Installation
