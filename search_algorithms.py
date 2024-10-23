@@ -33,6 +33,24 @@ def semantic_similarity_heuristic(text, idx, keyword):
     doc_keyword = nlp(keyword)
     return -doc_keyword.similarity(doc_section)  # Use negative to prioritize higher similarity (lower cost)
 
+# Heuristic to compute semantic similarity score between a section of text and keywords
+def compute_semantic_similarity(text, keywords):
+    doc_text = nlp(text)
+    keyword_docs = [nlp(keyword) for keyword in keywords]
+    return sum(doc_text.similarity(keyword_doc) for keyword_doc in keyword_docs) / len(keyword_docs)
+
+# Keyword distribution heuristic
+def compute_keyword_distribution(text, keywords):
+    positions = []
+    for keyword in keywords:
+        positions.extend([i for i in range(len(text)) if text.lower().startswith(keyword.lower(), i)])
+    
+    if len(positions) <= 1:
+        return 0  # No distribution if keywords are not found or occur only once
+    
+    std_dev = np.std(positions)
+    return 1 / (1 + std_dev)  # Inverse standard deviation as a measure of distribution
+
 # A* search algorithm with multiprocessing for efficiency
 def a_star_search(text, keywords, heuristic_func):
     open_list = PriorityQueue()
@@ -67,3 +85,12 @@ def parallel_a_star_search(text, keywords, heuristic_func):
     pool.close()
     pool.join()
     return results
+
+# Combined heuristic function that includes frequency, semantic similarity, and keyword distribution
+def combined_heuristic(text, idx, keyword, freq_scores, sim_scores, dist_scores, weights=(0.4, 0.3, 0.3)):
+    # Calculate combined score using weighted sum of keyword frequency, semantic similarity, and distribution
+    freq_score = freq_scores.get(idx, 0)
+    sim_score = sim_scores.get(idx, 0)
+    dist_score = dist_scores.get(idx, 0)
+    return -((weights[0] * freq_score) + (weights[1] * sim_score) + (weights[2] * dist_score))
+
